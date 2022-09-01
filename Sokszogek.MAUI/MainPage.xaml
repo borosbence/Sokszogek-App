@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Sokszogek.ViewModels;assembly=Sokszogek.ViewModels"
+             x:Class="Sokszogek.MAUI.MainPage"
+             Title="Sokszög kalkulátor">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="Editor">
+            <Setter Property="Keyboard" Value="Numeric"/>
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30">
+            <Picker Title="Sokszög típusa" FontSize="16"
+                    ItemsSource="{Binding SokszogList}" SelectedItem="{Binding KijeloltElem}"/>
+
+            <Label Text="Oldal A"/>
+            <Editor Text="{Binding OldalA}" />
+
+            <Label Text="Oldal B"/>
+            <Editor Text="{Binding OldalB}" />
+
+            <Label Text="Oldal C"/>
+            <Editor Text="{Binding OldalC}" />
+
+            <Label Text="Kerület"/>
+            <Editor Text="{Binding Kerulet}" IsReadOnly="True"/>
+
+            <Label Text="Terület"/>
+            <Editor Text="{Binding Terulet}" IsReadOnly="True" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
