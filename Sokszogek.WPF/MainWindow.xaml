@@ -1,0 +1,60 @@
+﻿<Window x:Class="Sokszogek.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sokszogek.WPF"
+        xmlns:vm="clr-namespace:Sokszogek.ViewModels;assembly=Sokszogek.ViewModels"
+        mc:Ignorable="d"
+        Title="Sokszög kalkulátor" Height="150" Width="500">
+<Window.Resources>
+    <Style TargetType="Label">
+        <Setter Property="FontSize" Value="16"/>
+    </Style>
+    <Style TargetType="TextBox">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="120"/>
+    </Style>
+    <Style x:Key="2ndLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
+    </Style>
+</Window.Resources>
+    <Grid Margin="10" ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Content="_Sokszög típusa" Target="{Binding ElementName=cboxSokszog}"
+        Grid.Column="0" Grid.Row="0"/>
+        <ComboBox x:Name="cboxSokszog" ItemsSource="{Binding SokszogList}" SelectedItem="{Binding KijeloltElem}"
+            Grid.Column="1" Grid.Row="0" Height="20" Width="120" />
+        <Label Content="_Kerület" Target="{Binding ElementName=txtKerulet}"
+        Grid.Column="0" Grid.Row="1" />
+        <TextBox x:Name="txtKerulet" Text="{Binding Path=Kerulet}" IsReadOnly="True"
+            Grid.Column="1" Grid.Row="1"/>
+        <Label Content="_Terület" Target="{Binding ElementName=txtTerulet}"
+        Grid.Column="0" Grid.Row="2"/>
+        <TextBox x:Name="txtTerulet" Text="{Binding Path=Terulet}" IsReadOnly="True"
+            Grid.Column="1" Grid.Row="2"/>
+        <Label Content="Oldal _A" Target="{Binding ElementName=txtOldalA}" Style="{StaticResource 2ndLabel}"
+        Grid.Column="2" Grid.Row="0"/>
+        <TextBox x:Name="txtOldalA" Text="{Binding OldalA, UpdateSourceTrigger=PropertyChanged}"
+            Grid.Column="3" Grid.Row="0"/>
+        <Label Content="Oldal _B" Target="{Binding ElementName=txtOldalB}" Style="{StaticResource 2ndLabel}" 
+        Grid.Column="2" Grid.Row="1"/>
+        <TextBox x:Name="txtOldalB" Text="{Binding OldalB, UpdateSourceTrigger=PropertyChanged}"
+            Grid.Column="3" Grid.Row="1"/>
+        <Label Content="Oldal _C" Target="{Binding ElementName=txtOldalC}" Style="{StaticResource 2ndLabel}" 
+        Grid.Column="2" Grid.Row="2"/>
+        <TextBox x:Name="txtOldalC" Text="{Binding OldalC, UpdateSourceTrigger=PropertyChanged}"
+            Grid.Column="3" Grid.Row="2"/>
+    </Grid>
+</Window>

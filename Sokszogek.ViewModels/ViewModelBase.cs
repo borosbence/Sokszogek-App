@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace Sokszogek.ViewModels
 {
+    // https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-implement-property-change-notification
     // Ez az osztály valósítja meg INotifyPropertyChanged interfészt
     // az egyirányú és kétirányú kötések támogatására 
     // (olyan, hogy az UI elem frissüljön, amikor a forrás 

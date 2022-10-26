@@ -86,7 +86,7 @@ namespace Sokszogek.ViewModels
             };
         }
 
-        public void Szamitas()
+        private void Szamitas()
         {
             switch (_kijeloltElem)
             {
