@@ -7,19 +7,21 @@
         xmlns:vm="clr-namespace:Sokszogek.ViewModels;assembly=Sokszogek.ViewModels"
         mc:Ignorable="d"
         Title="Sokszög kalkulátor" Height="150" Width="500">
-<Window.Resources>
-    <Style TargetType="Label">
-        <Setter Property="FontSize" Value="16"/>
-    </Style>
-    <Style TargetType="TextBox">
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="Width" Value="120"/>
-    </Style>
-    <Style x:Key="2ndLabel" TargetType="Label">
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="Margin" Value="10,0,10,0"/>
-    </Style>
-</Window.Resources>
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+        <Style x:Key="2ndLabel" TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
     <Grid Margin="10" ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>

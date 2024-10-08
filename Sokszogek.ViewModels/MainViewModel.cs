@@ -45,7 +45,7 @@ namespace Sokszogek.ViewModels
         public double Kerulet
         {
             get { return _kerulet; }
-            set 
+            set
             {
                 _kerulet = value;
                 OnPropertyChanged();
@@ -56,17 +56,17 @@ namespace Sokszogek.ViewModels
         public double Terulet
         {
             get { return _terulet; }
-            set 
+            set
             {
                 _terulet = value;
                 OnPropertyChanged();
             }
         }
 
-        public ObservableCollection<string> SokszogList { get; set; }
+        public ObservableCollection<string> SokszogList { get; }
 
-        private string _kijeloltElem;
-        public string KijeloltElem
+        private string? _kijeloltElem;
+        public string? KijeloltElem
         {
             get { return _kijeloltElem; }
             set
@@ -78,12 +78,7 @@ namespace Sokszogek.ViewModels
 
         public MainViewModel()
         {
-            SokszogList = new ObservableCollection<string>
-            {
-                "Négyzet",
-                "Téglalap",
-                "Háromszög"
-            };
+            SokszogList = ["Négyzet", "Téglalap", "Háromszög"];
         }
 
         private void Szamitas()

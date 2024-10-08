@@ -3,6 +3,7 @@
     public class Teglalap : Sokszog
     {
         public double OldalB { get; set; }
+
         public Teglalap(double A, double B) : base(A)
         {
             OldalB = B;
