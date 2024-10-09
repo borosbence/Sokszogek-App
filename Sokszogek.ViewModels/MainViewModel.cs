@@ -1,5 +1,4 @@
 ﻿using Sokszogek.Models;
-using System.Collections.ObjectModel;
 
 namespace Sokszogek.ViewModels
 {
@@ -13,7 +12,6 @@ namespace Sokszogek.ViewModels
             {
                 _oldalA = value;
                 Szamitas();
-                OnPropertyChanged();
             }
         }
 
@@ -25,7 +23,6 @@ namespace Sokszogek.ViewModels
             {
                 _oldalB = value;
                 Szamitas();
-                OnPropertyChanged();
             }
         }
 
@@ -37,7 +34,6 @@ namespace Sokszogek.ViewModels
             {
                 _oldalC = value;
                 Szamitas();
-                OnPropertyChanged();
             }
         }
 
@@ -63,7 +59,7 @@ namespace Sokszogek.ViewModels
             }
         }
 
-        public ObservableCollection<string> SokszogList { get; }
+        public List<string> SokszogList { get; } = ["Négyzet", "Téglalap", "Háromszög"];
 
         private string? _kijeloltElem;
         public string? KijeloltElem
@@ -76,32 +72,28 @@ namespace Sokszogek.ViewModels
             }
         }
 
-        public MainViewModel()
-        {
-            SokszogList = ["Négyzet", "Téglalap", "Háromszög"];
-        }
-
         private void Szamitas()
         {
+            Sokszog? sokszog = null;
             switch (_kijeloltElem)
             {
                 case "Négyzet":
-                    var negyzet = new Negyzet(OldalA);
-                    Kerulet = negyzet.Kerulet();
-                    Terulet = negyzet.Terulet();
+                    // Polimorfizumus
+                    sokszog = new Negyzet(OldalA);
                     break;
                 case "Téglalap":
-                    var teglalap = new Teglalap(OldalA, OldalB);
-                    Kerulet = teglalap.Kerulet();
-                    Terulet = teglalap.Terulet();
+                    sokszog = new Teglalap(OldalA, OldalB);
                     break;
                 case "Háromszög":
-                    var haromszog = new Haromszog(OldalA, OldalB, OldalC);
-                    Kerulet = haromszog.Kerulet();
-                    Terulet = haromszog.Terulet();
+                    sokszog = new Haromszog(OldalA, OldalB, OldalC);
                     break;
                 default:
                     break;
+            }
+            if (sokszog != null)
+            {
+                Kerulet = sokszog.Kerulet();
+                Terulet = sokszog.Terulet();
             }
         }
     }
